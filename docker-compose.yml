@@ -1,0 +1,17 @@
+version: "3"
+services:
+  web:
+    build: ./
+    container_name: brewery-display
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - HOST=0.0.0.0
+    ports:
+      - "8080:8080"
+    restart: always
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./:/src:z
+      - ./:/app:cached
+    working_dir: /app
